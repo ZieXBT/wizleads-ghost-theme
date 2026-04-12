@@ -90,7 +90,7 @@
     {{/if}}
 
     {{!-- Related Posts --}}
-    {{#get "posts" filter="tags:[{{primary_tag.slug}}]+id:-{{id}}" limit="3" include="tags,authors" as |related|}}
+    {{#get "posts" filter="id:-{{id}}" limit="3" include="tags,authors" as |related|}}
     {{#if related}}
     <section class="related-posts">
         <div class="container">
@@ -104,9 +104,6 @@
     </section>
     {{/if}}
     {{/get}}
-
-    {{!-- Subscribe CTA --}}
-    {{> "subscribe" variant="inline-article"}}
 
 </article>
 {{/post}}

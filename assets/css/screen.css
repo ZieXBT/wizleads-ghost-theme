@@ -123,11 +123,11 @@ p { text-wrap: pretty; }
     transform: translateX(-50%);
     z-index: 1000;
     background: #fff;
-    border-radius: 26px;
-    padding: 8px 8px 8px 20px;
+    border-radius: 999px;
+    padding: 10px 10px 10px 24px;
     display: flex;
     align-items: center;
-    gap: 6px;
+    gap: 8px;
     box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
     border: 1px solid rgba(0,0,0,0.06);
 }
@@ -138,8 +138,8 @@ p { text-wrap: pretty; }
     text-decoration: none;
     color: var(--text);
     font-weight: 800;
-    font-size: 1.1rem;
-    margin-right: 8px;
+    font-size: 1.15rem;
+    margin-right: 16px;
     white-space: nowrap;
 }
 .fh-logo img { width: 26px; height: 26px; }
@@ -151,9 +151,9 @@ p { text-wrap: pretty; }
 .fh-nav a {
     text-decoration: none;
     color: #52525b;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-radius: 12px;
     transition: background 0.15s, color 0.15s;
     white-space: nowrap;
@@ -167,9 +167,9 @@ p { text-wrap: pretty; }
     align-items: center;
     gap: 4px;
     color: #52525b;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 500;
-    padding: 8px 12px;
+    padding: 10px 14px;
     border-radius: 12px;
     transition: background 0.15s, color 0.15s;
     white-space: nowrap;
@@ -258,14 +258,17 @@ p { text-wrap: pretty; }
     text-decoration: none;
     background: var(--purple);
     color: #fff;
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     font-weight: 600;
-    padding: 10px 22px;
-    border-radius: 20px;
+    padding: 12px 24px;
+    border-radius: 999px;
     transition: background 0.15s;
     white-space: nowrap;
 }
 .fh-cta:hover { background: var(--purple-hover); }
+.fh-mobile-cta {
+    display: none;
+}
 .fh-mobile-btn {
     display: none;
     background: none;
@@ -316,9 +319,33 @@ p { text-wrap: pretty; }
 main, #main { padding-top: 80px; }
 
 @media (max-width: 900px) {
-    .fh-nav, .fh-actions { display: none; }
-    .fh-mobile-btn { display: block; }
-    .floating-header { padding: 8px 8px 8px 16px; }
+    .fh-nav { display: none; }
+    .fh-actions { display: none; }
+    .fh-mobile-cta {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8px 20px;
+        border: 1.5px solid var(--purple);
+        color: var(--purple);
+        background: none;
+        border-radius: 999px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-decoration: none;
+        white-space: nowrap;
+        margin-left: auto;
+    }
+    .fh-mobile-btn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-left: 12px;
+    }
+    .floating-header {
+        padding: 10px 16px;
+    }
+    .fh-logo { margin-right: auto; }
 }
 
 /* Subscribe button (shared — used in forms, not header) */
@@ -481,14 +508,7 @@ main, #main { padding-top: 80px; }
     color: var(--purple);
 }
 
-@media (max-width: 900px) {
-    .featured-grid {
-        grid-template-columns: 1fr;
-    }
-    .featured-sidebar {
-        margin-top: 1rem;
-    }
-}
+/* Featured grid responsive — consolidated into section 27 */
 
 /* -----------------------------------------------------------------------------
    8. Homepage — Subscribe CTA
@@ -545,24 +565,7 @@ main, #main { padding-top: 80px; }
     border-radius: 10px;
 }
 
-@media (max-width: 768px) {
-    .subscribe-cta-card {
-        grid-template-columns: 1fr;
-        padding: 32px;
-    }
-    .subscribe-cta-image {
-        order: -1;
-    }
-}
-@media (max-width: 480px) {
-    .subscribe-cta-form,
-    .subscribe-form form {
-        flex-direction: column;
-    }
-    .subscribe-cta-card {
-        padding: 24px;
-    }
-}
+/* Subscribe CTA responsive — consolidated into section 27 */
 
 /* -----------------------------------------------------------------------------
    8b. CTA Banner (purple gradient with floating cards)
@@ -662,10 +665,7 @@ main, #main { padding-top: 80px; }
 .cta-banner-btn:hover {
     transform: translateY(-2px);
 }
-@media (max-width: 768px) {
-    .cta-float { display: none; }
-    .cta-banner-content { padding: 28px 24px; }
-}
+/* CTA banner responsive — consolidated into section 27 */
 
 /* -----------------------------------------------------------------------------
    9. Section Heading
@@ -688,16 +688,7 @@ main, #main { padding-top: 80px; }
     gap: 2rem;
 }
 
-@media (max-width: 900px) {
-    .posts-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 600px) {
-    .posts-grid {
-        grid-template-columns: 1fr;
-    }
-}
+/* Posts grid responsive — consolidated into section 27 */
 
 /* -----------------------------------------------------------------------------
    11. Post Card
@@ -1866,11 +1857,7 @@ mark {
     font-weight: 600;
 }
 
-@media (max-width: 480px) {
-    .subscribe-inline-form {
-        flex-direction: column;
-    }
-}
+/* Subscribe inline responsive — consolidated into section 27 */
 
 /* -----------------------------------------------------------------------------
    20. Paywall
@@ -1998,15 +1985,7 @@ mark {
     text-decoration: underline;
 }
 
-@media (max-width: 600px) {
-    .author-header-inner {
-        flex-direction: column;
-        text-align: center;
-    }
-    .author-links {
-        justify-content: center;
-    }
-}
+/* Author header responsive — consolidated into section 27 */
 
 /* -----------------------------------------------------------------------------
    23. Page
@@ -2169,18 +2148,7 @@ mark {
     color: #ffffff;
 }
 
-@media (max-width: 960px) {
-    .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 2.5rem;
-    }
-}
-@media (max-width: 600px) {
-    .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-}
+/* Footer responsive — consolidated into section 27 */
 
 /* -----------------------------------------------------------------------------
    26. Ghost Portal / Members Forms
@@ -2222,31 +2190,153 @@ mark {
 }
 
 /* -----------------------------------------------------------------------------
-   27. Responsive Utilities
+   27. Responsive Utilities (consolidated)
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
+    /* Hero */
     .home-hero {
         padding: 3rem 0 2.5rem;
+    }
+    .home-hero-title {
+        font-size: clamp(2rem, 1.5rem + 3vw, 3rem);
+        line-height: 1.05;
+    }
+
+    /* Featured */
+    .featured-grid {
+        grid-template-columns: 1fr;
+    }
+    .featured-sidebar {
+        margin-top: 1rem;
+    }
+    .featured-main .featured-img {
+        width: 100%;
+    }
+    .sidebar-post {
+        gap: 16px;
+    }
+    .sidebar-img-wrapper {
+        width: 140px;
+        height: 88px;
+    }
+    .sidebar-img {
+        width: 140px;
+        height: 88px;
+    }
+    .sidebar-title {
+        font-size: 18px;
+    }
+
+    /* Subscribe CTA */
+    .subscribe-cta-card {
+        grid-template-columns: 1fr;
+        padding: 32px;
+    }
+    .subscribe-cta-image {
+        order: -1;
+    }
+
+    /* CTA Banner */
+    .cta-float {
+        display: none;
+    }
+    .cta-banner-content {
+        padding: 28px 24px;
+    }
+
+    /* Post grid */
+    .posts-grid {
+        grid-template-columns: 1fr;
     }
     .posts-section {
         padding: 2.5rem 0;
     }
-    .post-hero-section {
-        padding: 32px 0;
+    .post-card-title {
+        font-size: 24px;
+        font-weight: 600;
     }
+
+    /* Section heading stays prominent on mobile */
+    .section-heading {
+        font-size: 30px;
+    }
+
+    /* Post page hero */
     .post-hero-grid {
         grid-template-columns: 1fr;
     }
     .post-hero-image {
         order: -1;
     }
+    .post-hero-section {
+        padding: 32px 0;
+    }
     .post-title {
         font-size: 28px;
         line-height: 34px;
     }
+
+    /* Tags + Share */
     .post-tags-share {
         flex-direction: column;
         gap: 2rem;
+    }
+
+    /* Footer */
+    .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+    }
+    .footer-brand {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-hero-title {
+        font-size: 2rem;
+    }
+
+    .subscribe-cta-card {
+        padding: 24px;
+    }
+
+    /* Keep forms horizontal on mobile like Wind */
+    .subscribe-form form,
+    .subscribe-cta-form,
+    .subscribe-inline-form {
+        flex-direction: row;
+    }
+
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* CTA banner hide floating cards */
+    .cta-float {
+        display: none;
+    }
+    .cta-banner-content {
+        padding: 28px 24px;
+    }
+
+    /* Author row stack on very small */
+    .post-author-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+    }
+    .post-hero-share {
+        align-self: flex-start;
+    }
+
+    /* Author header page */
+    .author-header-inner {
+        flex-direction: column;
+        text-align: center;
+    }
+    .author-links {
+        justify-content: center;
     }
 }
 
