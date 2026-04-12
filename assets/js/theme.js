@@ -98,7 +98,9 @@
     var heroBtn = document.getElementById('hero-search-btn');
     var heroResults = document.getElementById('hero-search-results');
     var searchTimer = null;
-    var GHOST_API_URL = window.location.origin + '/ghost/api/content/posts/';
+    var ghostMeta = document.querySelector('link[rel="alternate"][type="application/rss+xml"]');
+    var ghostRoot = ghostMeta ? ghostMeta.href.replace('/rss/', '/') : window.location.origin + '/';
+    var GHOST_API_URL = ghostRoot + 'ghost/api/content/posts/';
     var GHOST_API_KEY = 'aac7ae7956a99ebc3907879ba3';
 
     function doSearch(query) {
