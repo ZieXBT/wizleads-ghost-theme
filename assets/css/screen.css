@@ -133,14 +133,12 @@ p { text-wrap: pretty; }
    4. Floating Pill Header
    -------------------------------------------------------------------------- */
 .floating-header {
-    position: fixed;
+    position: absolute;
     top: 16px;
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.95);
     border-radius: 999px;
     padding: 10px 10px 10px 24px;
     display: flex;
@@ -312,7 +310,7 @@ p { text-wrap: pretty; }
 }
 .fh-mobile-menu {
     display: none;
-    position: fixed;
+    position: absolute;
     top: 72px;
     left: 50%;
     transform: translateX(-50%);
@@ -468,6 +466,107 @@ main, #main { padding-top: 80px; }
     gap: 12px;
     max-width: 448px;
     margin: 0 auto;
+}
+.hero-search-form {
+    display: flex;
+    gap: 12px;
+    max-width: 448px;
+    margin: 0 auto;
+}
+.hero-search-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid #f4f4f5;
+    border-radius: 999px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #fafafa;
+    outline: none;
+    color: var(--text);
+}
+.hero-search-input:focus {
+    border-color: var(--purple);
+}
+.hero-search-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: var(--purple);
+    color: #fff;
+    border: none;
+    border-radius: 999px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.hero-search-btn:hover {
+    background: var(--purple-hover);
+}
+.hero-search-results {
+    display: none;
+    max-width: 448px;
+    margin: 12px auto 0;
+    background: #fff;
+    border: 1px solid #e5e7eb;
+    border-radius: 12px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+    overflow: hidden;
+    text-align: left;
+}
+.hero-search-results.active {
+    display: block;
+}
+.hero-search-result {
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    padding: 12px 16px;
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 1px solid #f4f4f5;
+    transition: background 0.1s;
+}
+.hero-search-result:last-child {
+    border-bottom: none;
+}
+.hero-search-result:hover {
+    background: #f9fafb;
+}
+.hero-search-result img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+.hero-search-result-text {
+    flex: 1;
+    min-width: 0;
+}
+.hero-search-result-title {
+    font-weight: 600;
+    font-size: 0.9rem;
+    line-height: 1.3;
+    margin-bottom: 2px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.hero-search-result-excerpt {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.hero-search-no-results {
+    padding: 16px;
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 0.9rem;
 }
 .subscribe-form input[type="email"],
 .subscribe-cta-form input[type="email"],
@@ -678,7 +777,7 @@ main, #main { padding-top: 80px; }
 .cta-banner-content {
     position: relative;
     z-index: 2;
-    padding: 36px 48px;
+    padding: 28px 48px;
     max-width: 600px;
 }
 .cta-banner-content h2 {
@@ -699,12 +798,14 @@ main, #main { padding-top: 80px; }
     font-size: 0.9rem;
     font-weight: 400;
     line-height: 1.6;
-    margin-bottom: 20px;
+    margin-bottom: 14px;
 }
 .cta-banner-form {
     display: flex;
-    gap: 12px;
+    gap: 10px;
+    flex-wrap: wrap;
 }
+.cta-banner-form input[type="text"],
 .cta-banner-form input[type="email"] {
     padding: 14px 20px;
     border-radius: 26px;
@@ -713,13 +814,14 @@ main, #main { padding-top: 80px; }
     color: white;
     font-size: 0.95rem;
     font-family: inherit;
-    width: 260px;
+    flex: 1;
+    min-width: 140px;
     outline: none;
 }
-.cta-banner-form input[type="email"]::placeholder {
+.cta-banner-form input::placeholder {
     color: rgba(255,255,255,0.4);
 }
-.cta-banner-form input[type="email"]:focus {
+.cta-banner-form input:focus {
     border-color: rgba(255,255,255,0.4);
     background: rgba(255,255,255,0.15);
 }
@@ -737,6 +839,10 @@ main, #main { padding-top: 80px; }
 }
 .cta-banner-form button:hover {
     transform: translateY(-2px);
+}
+.cta-banner-msg {
+    font-size: 0.85rem;
+    margin-top: 10px;
 }
 @media (max-width: 768px) {
     .cta-float {

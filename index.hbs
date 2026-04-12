@@ -8,13 +8,14 @@
             <h1 class="home-hero-title">The WizLeads Blog: Data Scraping, Email Enrichment &amp; B2B Lead Generation 🚀</h1>
             <p class="home-hero-desc">Tutorials, tool comparisons, and actionable guides on Sales Navigator, email verification, and cold outreach. Written for agencies, SDRs, and growth teams who sell to businesses.</p>
             <div class="subscribe-form">
-                <form data-members-form="subscribe">
-                    <input data-members-email type="email" placeholder="Email address" required>
-                    <button type="submit" class="btn-subscribe">Subscribe</button>
-                    <p class="message-loading">Sending...</p>
-                    <p class="message-success">Great! Check your inbox for a confirmation email.</p>
-                    <p class="message-error">Something went wrong. Please try again.</p>
-                </form>
+                <div class="hero-search-form">
+                    <input type="text" class="hero-search-input" placeholder="Search articles..." id="hero-search-input" autocomplete="off">
+                    <button type="button" class="hero-search-btn" id="hero-search-btn" aria-label="Search">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+                        Search
+                    </button>
+                </div>
+                <div class="hero-search-results" id="hero-search-results"></div>
             </div>
         </div>
     </section>
@@ -63,11 +64,11 @@
                 <div class="cta-banner-grid"></div>
                 <div class="cta-banner-orb cta-banner-orb-1"></div>
                 <div class="cta-banner-orb cta-banner-orb-2"></div>
-                <div class="cta-float" style="top:24px;right:320px;transform:rotate(1deg);">
+                <div class="cta-float" style="top:18px;right:320px;transform:rotate(1deg);">
                     <span style="font-size:16px;">🧭</span>
                     <span>Sales Navigator</span>
                 </div>
-                <div class="cta-float" style="top:24px;right:30px;transform:rotate(-0.8deg);">
+                <div class="cta-float" style="top:18px;right:30px;transform:rotate(-0.8deg);">
                     <span style="font-size:16px;">⚡</span>
                     <span>Account-Less Mode</span>
                 </div>
@@ -79,24 +80,23 @@
                     <img src="{{asset "images/logos/google-maps-icon.webp"}}" alt="" width="18" height="18">
                     <span>Google Maps</span>
                 </div>
-                <div class="cta-float" style="bottom:24px;right:340px;transform:rotate(0.8deg);">
+                <div class="cta-float" style="bottom:18px;right:340px;transform:rotate(0.8deg);">
                     <span style="font-size:16px;">⚙️</span>
                     <span>REST API</span>
                 </div>
-                <div class="cta-float" style="bottom:24px;right:60px;transform:rotate(-1deg);">
+                <div class="cta-float" style="bottom:18px;right:60px;transform:rotate(-1deg);">
                     <span style="font-size:16px;">🛡️</span>
                     <span>Catchall Verification</span>
                 </div>
                 <div class="cta-banner-content">
                     <h2>Win 10,000 Free <span>Credits</span> Every Month</h2>
                     <p>We do weekly giveaways of WizLeads 100% off coupon codes, free credits, and exclusive deals. Subscribe to the blog to enter.</p>
-                    <form data-members-form="subscribe" class="cta-banner-form">
-                        <input data-members-email type="email" placeholder="Email address" required>
+                    <form class="cta-banner-form" id="cta-subscribe-form">
+                        <input type="text" name="name" placeholder="Your name" required>
+                        <input type="email" name="email" placeholder="Email address" required>
                         <button type="submit">Subscribe</button>
-                        <p class="message-loading" style="color:rgba(255,255,255,0.6);">Sending...</p>
-                        <p class="message-success" style="color:#a5f3a3;">Great! Check your inbox for a confirmation email.</p>
-                        <p class="message-error" style="color:#fca5a5;">Something went wrong. Please try again.</p>
                     </form>
+                    <p class="cta-banner-msg" id="cta-subscribe-msg"></p>
                 </div>
             </div>
         </div>
@@ -119,7 +119,7 @@
             </div>
             {{#if pagination.next}}
             <div class="pagination">
-                <a href="{{pagination.next}}" class="btn-load-more">Load More</a>
+                <a href="{{page_url pagination.next}}" class="btn-load-more">Load More</a>
             </div>
             {{/if}}
         </div>

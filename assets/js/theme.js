@@ -92,53 +92,168 @@
     });
 
     /* ---------------------------------------------------------------
-       Infinite scroll — AJAX "Load More" for post grids
+       Hero search — inline Ghost Content API search
        --------------------------------------------------------------- */
-    var loadMoreBtn = document.querySelector('.btn-load-more');
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', function (e) {
-            e.preventDefault();
+    var heroInput = document.getElementById('hero-search-input');
+    var heroBtn = document.getElementById('hero-search-btn');
+    var heroResults = document.getElementById('hero-search-results');
+    var searchTimer = null;
+    var GHOST_API_URL = window.location.origin + '/ghost/api/content/posts/';
+    var GHOST_API_KEY = 'aac7ae7956a99ebc3907879ba3';
 
-            var btn = this;
-            var nextUrl = btn.getAttribute('href');
-            if (!nextUrl || btn.classList.contains('loading')) return;
+    function doSearch(query) {
+        if (!query || query.length < 2) {
+            heroResults.classList.remove('active');
+            heroResults.innerHTML = '';
+            return;
+        }
+        var url = GHOST_API_URL + '?key=' + GHOST_API_KEY +
+            '&limit=5&fields=title,url,excerpt,feature_image&filter=title:~%27' +
+            encodeURIComponent(query) + '%27';
 
-            btn.classList.add('loading');
-            var originalText = btn.textContent;
-            btn.textContent = 'Loading…';
+        fetch(url)
+            .then(function (r) { return r.json(); })
+            .then(function (data) {
+                var posts = data.posts || [];
+                if (!posts.length) {
+                    heroResults.innerHTML = '<div class="hero-search-no-results">No results found</div>';
+                    heroResults.classList.add('active');
+                    return;
+                }
+                heroResults.innerHTML = posts.map(function (p) {
+                    var img = p.feature_image
+                        ? '<img src="' + p.feature_image + '" alt="" width="48" height="48" loading="lazy">'
+                        : '';
+                    var excerpt = (p.excerpt || '').substring(0, 80);
+                    return '<a href="' + p.url + '" class="hero-search-result">' +
+                        img +
+                        '<div class="hero-search-result-text">' +
+                            '<div class="hero-search-result-title">' + p.title + '</div>' +
+                            '<div class="hero-search-result-excerpt">' + excerpt + '</div>' +
+                        '</div></a>';
+                }).join('');
+                heroResults.classList.add('active');
+            })
+            .catch(function () {
+                heroResults.innerHTML = '<div class="hero-search-no-results">Search unavailable</div>';
+                heroResults.classList.add('active');
+            });
+    }
 
-            fetch(nextUrl)
-                .then(function (res) { return res.text(); })
-                .then(function (html) {
-                    var parser = new DOMParser();
-                    var doc = parser.parseFromString(html, 'text/html');
-
-                    // Extract post cards from fetched page
-                    var newCards = doc.querySelectorAll('.post-card');
-                    var grid = document.querySelector('.posts-grid');
-
-                    if (grid && newCards.length) {
-                        newCards.forEach(function (card) {
-                            grid.appendChild(document.importNode(card, true));
-                        });
-                    }
-
-                    // Check if there's a next page link in the fetched page
-                    var nextPageBtn = doc.querySelector('.btn-load-more');
-                    if (nextPageBtn && nextPageBtn.getAttribute('href')) {
-                        btn.setAttribute('href', nextPageBtn.getAttribute('href'));
-                        btn.textContent = originalText;
-                        btn.classList.remove('loading');
-                    } else {
-                        // No more pages — hide the button
-                        btn.parentElement.style.display = 'none';
-                    }
-                })
-                .catch(function () {
-                    btn.textContent = originalText;
-                    btn.classList.remove('loading');
-                });
+    if (heroInput && heroBtn && heroResults) {
+        heroInput.addEventListener('input', function () {
+            clearTimeout(searchTimer);
+            var q = this.value.trim();
+            searchTimer = setTimeout(function () { doSearch(q); }, 300);
+        });
+        heroInput.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                clearTimeout(searchTimer);
+                doSearch(this.value.trim());
+            }
+        });
+        heroBtn.addEventListener('click', function () {
+            doSearch(heroInput.value.trim());
+        });
+        document.addEventListener('click', function (e) {
+            if (!e.target.closest('.subscribe-form')) {
+                heroResults.classList.remove('active');
+            }
         });
     }
+
+    /* ---------------------------------------------------------------
+       CTA Subscribe — Airtable integration
+       --------------------------------------------------------------- */
+    var ctaForm = document.getElementById('cta-subscribe-form');
+    var ctaMsg = document.getElementById('cta-subscribe-msg');
+    if (ctaForm && ctaMsg) {
+        ctaForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            var name = ctaForm.querySelector('input[name="name"]').value.trim();
+            var email = ctaForm.querySelector('input[name="email"]').value.trim();
+            if (!name || !email) return;
+
+            var btn = ctaForm.querySelector('button');
+            btn.textContent = 'Sending...';
+            btn.disabled = true;
+
+            fetch('https://api.airtable.com/v0/appq85YavAIEtTVfB/tblBEO4Xex0ijCJrz', {
+                method: 'POST',
+                headers: {
+                    'Authorization': 'Bearer patEG4OqaQod4ljR3.f2b9df69aea901f9bfd013365ed71fe78ec9d3919aaa503f6b5476e9ab7488be',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    records: [{ fields: { Name: name, Email: email } }]
+                })
+            })
+            .then(function (r) {
+                if (!r.ok) throw new Error('Failed');
+                return r.json();
+            })
+            .then(function () {
+                ctaMsg.style.color = '#a5f3a3';
+                ctaMsg.textContent = 'You\'re in! We\'ll notify you about giveaways and deals.';
+                ctaForm.style.display = 'none';
+            })
+            .catch(function () {
+                ctaMsg.style.color = '#fca5a5';
+                ctaMsg.textContent = 'Something went wrong. Please try again.';
+                btn.textContent = 'Subscribe';
+                btn.disabled = false;
+            });
+        });
+    }
+
+    /* ---------------------------------------------------------------
+       Infinite scroll — AJAX "Load More" for post grids
+       --------------------------------------------------------------- */
+    document.addEventListener('click', function (e) {
+        var btn = e.target.closest('.btn-load-more');
+        if (!btn) return;
+        e.preventDefault();
+        e.stopPropagation();
+
+        var nextUrl = btn.getAttribute('href');
+        if (!nextUrl || btn.classList.contains('loading')) return;
+
+        btn.classList.add('loading');
+        var originalText = btn.textContent;
+        btn.textContent = 'Loading…';
+
+        fetch(nextUrl)
+            .then(function (res) {
+                if (!res.ok) throw new Error(res.status);
+                return res.text();
+            })
+            .then(function (html) {
+                var parser = new DOMParser();
+                var doc = parser.parseFromString(html, 'text/html');
+
+                var newCards = doc.querySelectorAll('.post-card');
+                var grid = document.querySelector('.posts-grid');
+
+                if (grid && newCards.length) {
+                    newCards.forEach(function (card) {
+                        grid.appendChild(document.importNode(card, true));
+                    });
+                }
+
+                var nextPageBtn = doc.querySelector('.btn-load-more');
+                if (nextPageBtn && nextPageBtn.getAttribute('href')) {
+                    btn.setAttribute('href', nextPageBtn.getAttribute('href'));
+                    btn.textContent = originalText;
+                    btn.classList.remove('loading');
+                } else {
+                    btn.parentElement.style.display = 'none';
+                }
+            })
+            .catch(function () {
+                btn.textContent = originalText;
+                btn.classList.remove('loading');
+            });
+    });
 
 })();
