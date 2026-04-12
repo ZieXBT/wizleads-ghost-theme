@@ -35,18 +35,6 @@
       "l": { "width": 1600 },
       "xl": { "width": 2000 }
     },
-    "card_assets": true,
-    "custom": {
-      "show_related": {
-        "type": "boolean",
-        "default": true,
-        "group": "post"
-      },
-      "show_author_bio": {
-        "type": "boolean",
-        "default": true,
-        "group": "post"
-      }
-    }
+    "card_assets": true
   }
 }
