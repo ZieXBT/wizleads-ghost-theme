@@ -122,13 +122,15 @@ p { text-wrap: pretty; }
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
-    background: #fff;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border-radius: 999px;
     padding: 10px 10px 10px 24px;
     display: flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 24px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06), 0 1px 4px rgba(0,0,0,0.03);
     border: 1px solid rgba(0,0,0,0.06);
 }
 .fh-logo {
@@ -313,7 +315,22 @@ p { text-wrap: pretty; }
     gap: 8px;
 }
 .fh-mobile-menu .fh-mobile-actions a { text-align: center; font-weight: 600; }
-.fh-mobile-menu .fh-mobile-actions .fh-cta { display: block; padding: 12px; }
+.fh-mobile-menu .fh-mobile-actions .fh-cta {
+    display: block;
+    padding: 14px;
+    background: #7c3aed !important;
+    color: #fff !important;
+    text-align: center;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+}
+.fh-mobile-menu .fh-mobile-actions .fh-login {
+    text-align: center;
+    padding: 12px;
+    color: #27272a;
+    font-weight: 500;
+}
 
 /* Push content below fixed header */
 main, #main { padding-top: 80px; }
@@ -325,27 +342,37 @@ main, #main { padding-top: 80px; }
         display: inline-flex;
         align-items: center;
         justify-content: center;
-        padding: 8px 20px;
-        border: 1.5px solid var(--purple);
-        color: var(--purple);
-        background: none;
+        padding: 6px 14px;
+        background: #7c3aed;
+        color: #fff;
+        border: none;
         border-radius: 999px;
-        font-size: 0.85rem;
+        font-size: 0.8rem;
         font-weight: 600;
         text-decoration: none;
         white-space: nowrap;
-        margin-left: auto;
+        flex-shrink: 0;
     }
     .fh-mobile-btn {
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-left: 12px;
+        flex-shrink: 0;
+        margin-left: 8px;
     }
     .floating-header {
-        padding: 10px 16px;
+        padding: 8px 12px;
+        gap: 8px;
+        width: calc(100% - 24px);
+        max-width: 100%;
     }
-    .fh-logo { margin-right: auto; }
+    .fh-logo {
+        margin-right: auto;
+        font-size: 1rem;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+    }
 }
 
 /* Subscribe button (shared — used in forms, not header) */
@@ -456,7 +483,7 @@ main, #main { padding-top: 80px; }
 }
 .featured-title {
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 700;
     margin-bottom: 0.75rem;
     line-height: 36px;
     transition: color var(--dur);
@@ -492,15 +519,19 @@ main, #main { padding-top: 80px; }
     width: 176px;
     height: 110px;
     object-fit: cover;
-    border-radius: 0;
+    border-radius: 10px;
     flex-shrink: 0;
+}
+.sidebar-text {
+    flex: 1;
+    min-width: 0;
 }
 .sidebar-text .post-tag {
     margin-bottom: 0.375rem;
 }
 .sidebar-title {
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 32px;
     transition: color var(--dur);
 }
@@ -733,8 +764,8 @@ main, #main { padding-top: 80px; }
     margin-bottom: 0.5rem;
 }
 .post-card-title {
-    font-size: var(--fs-md);
-    font-weight: 600;
+    font-size: 20px;
+    font-weight: 700;
     margin-bottom: 0.5rem;
     line-height: 1.3;
     transition: color var(--dur);
@@ -747,9 +778,9 @@ main, #main { padding-top: 80px; }
     text-decoration-thickness: 2px;
 }
 .post-card-excerpt {
-    font-size: 18px;
-    color: var(--text);
-    line-height: 1.6;
+    font-size: 15px;
+    color: var(--text-muted);
+    line-height: 1.45;
 }
 
 /* -----------------------------------------------------------------------------
@@ -787,6 +818,8 @@ main, #main { padding-top: 80px; }
 .post-hero-section {
     background: #f4f4f5;
     padding: 64px 0;
+    padding-top: 100px;
+    margin-top: -80px;
     position: relative;
     overflow: hidden;
 }
@@ -1814,6 +1847,12 @@ mark {
     padding: 3rem 0;
     border-top: 1px solid #e5e7eb;
 }
+.related-posts .section-heading {
+    text-align: left;
+    font-weight: 700;
+    font-size: 28px;
+    margin-bottom: 2rem;
+}
 
 /* -----------------------------------------------------------------------------
    18. Comments
@@ -2253,7 +2292,7 @@ mark {
     }
     .post-card-title {
         font-size: 24px;
-        font-weight: 600;
+        font-weight: 700;
     }
 
     /* Section heading stays prominent on mobile */
@@ -2261,19 +2300,29 @@ mark {
         font-size: 30px;
     }
 
-    /* Post page hero */
+    /* Post page hero — text first, image below (matches Wind mobile) */
     .post-hero-grid {
         grid-template-columns: 1fr;
+        gap: 24px;
     }
-    .post-hero-image {
+    .post-hero-text {
         order: -1;
     }
     .post-hero-section {
         padding: 32px 0;
+        padding-top: 90px;
+        margin-top: -80px;
     }
     .post-title {
-        font-size: 28px;
-        line-height: 34px;
+        font-size: 32px;
+        line-height: 38px;
+        font-weight: 700;
+    }
+    /* Keep author + share on same row on mobile */
+    .post-author-row {
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
     }
 
     /* Tags + Share */
@@ -2320,14 +2369,12 @@ mark {
         padding: 28px 24px;
     }
 
-    /* Author row stack on very small */
+    /* Author row — keep horizontal with share icons beside name */
     .post-author-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 16px;
-    }
-    .post-hero-share {
-        align-self: flex-start;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
     }
 
     /* Author header page */
