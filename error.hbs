@@ -1,0 +1,13 @@
+{{!< default}}
+
+<div class="error-page">
+    <div class="container">
+        <span class="post-tag">Error {{statusCode}}</span>
+        <h1 class="error-title">Page not found.</h1>
+        <p class="error-desc">{{message}}</p>
+        <div class="error-actions">
+            <a href="{{@site.url}}" class="btn-subscribe">Return home</a>
+            <button type="button" class="btn-load-more" data-ghost-search>Search the archive</button>
+        </div>
+    </div>
+</div>

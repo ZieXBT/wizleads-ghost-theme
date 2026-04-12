@@ -1,0 +1,140 @@
+{{!< default}}
+
+<div class="home">
+    {{#unless pagination.prev}}
+    {{!-- Hero --}}
+    <section class="home-hero">
+        <div class="container">
+            <h1 class="home-hero-title">WizLeads 🚀 is Where<br>Ideas &amp; Insights Move Freely.</h1>
+            <p class="home-hero-desc">B2B lead generation tips, cold email strategies, Sales Navigator tutorials, and product updates. Built for agencies, SDRs, and growth teams.</p>
+            <div class="subscribe-form">
+                <form data-members-form="subscribe">
+                    <input type="email" name="email" placeholder="Email address" required>
+                    <button type="submit" class="btn-subscribe">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    {{!-- Featured + Sidebar --}}
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-grid">
+                {{#get "posts" limit="1" include="tags,authors"}}
+                {{#foreach posts}}
+                <div class="featured-main">
+                    <a href="{{url}}" class="featured-card">
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image size="l"}}" alt="{{title}}" class="featured-img" loading="eager">
+                        {{/if}}
+                        {{#primary_tag}}<span class="post-tag">{{name}}</span>{{/primary_tag}}
+                        <h2 class="featured-title">{{title}}</h2>
+                        <p class="featured-excerpt">{{excerpt words="30"}}</p>
+                    </a>
+                </div>
+                {{/foreach}}
+                {{/get}}
+                <div class="featured-sidebar">
+                    {{#get "posts" limit="4" offset="1" include="tags"}}
+                    {{#foreach posts}}
+                    <a href="{{url}}" class="sidebar-post">
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image size="xs"}}" alt="{{title}}" class="sidebar-img" loading="lazy">
+                        {{/if}}
+                        <div class="sidebar-text">
+                            {{#primary_tag}}<span class="post-tag">{{name}}</span>{{/primary_tag}}
+                            <h3 class="sidebar-title">{{title}}</h3>
+                        </div>
+                    </a>
+                    {{/foreach}}
+                    {{/get}}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{!-- Subscribe CTA --}}
+    <section class="subscribe-cta">
+        <div class="container">
+            <div class="subscribe-cta-card">
+                <div class="subscribe-cta-text">
+                    <div class="subscribe-cta-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="70" height="16" viewBox="0 0 70 16" fill="none"><path d="M0.941897 10.7566C2.0976 9.52858 3.274 8.31378 4.52835 7.19085C8.73851 3.06142 15.6832 1.01158 18.1775 7.42595C18.3351 7.71643 18.6209 8.62704 18.7998 9.25839C20.5525 7.7137 22.3143 6.1854 24.2502 4.9052C37.3678 -4.10002 59.6709 -0.285372 67.5463 12.9037C67.576 12.9649 67.5872 13.0248 67.6053 13.0891C67.5986 13.0532 67.601 13.0336 67.5989 12.99C67.2538 10.2359 65.738 7.65485 64.1942 4.69692C63.5698 3.24328 61.8028 1.46312 63.2501 0.494782C63.5788 0.30286 64.0125 0.315114 64.2974 0.538814C64.2905 0.53442 64.2767 0.525608 64.2744 0.51362C64.2882 0.522408 64.302 0.531205 64.3181 0.55198C64.3388 0.565161 64.3526 0.573957 64.3733 0.587138C64.4422 0.631075 64.4904 0.693408 64.5316 0.751341C64.6325 0.868399 64.7287 0.993039 64.8087 1.12849C64.7675 1.07055 64.6189 0.828032 64.6966 0.951491C65.6468 2.3275 66.0743 3.05388 67.0519 4.90143C68.1407 7.08383 72.0957 14.323 68.5617 15.863C67.1614 16.2383 65.782 15.7504 64.4404 15.4978C61.3178 14.7867 58.2517 13.8581 55.1901 12.9536C54.0079 12.6758 54.2565 10.6588 55.4845 10.5645C58.6699 11.1889 61.7643 12.4312 64.9726 13.0808C64.6108 12.5758 64.0634 11.8258 63.7581 11.5258C62.1292 9.37953 57.7299 6.65148 55.8636 5.73732C45.6368 1.12447 34.2239 0.824718 24.6518 7.44187C23.4195 8.32543 22.3606 9.16098 20.7538 10.6085C19.7357 11.5651 18.0333 13.1841 17.1106 11.4349C15.7436 6.92117 14.7551 4.95054 10.5453 6.02844C8.46056 6.67528 6.61716 8.35229 4.30471 10.5753C3.54631 11.2961 2.81086 12.042 2.05935 12.7671C1.51307 13.5174 0.345208 13.5761 0.0687073 12.6503C-0.0406442 12.3905 -0.0180647 12.0565 0.126433 11.7895C0.364387 11.3074 0.365792 11.4773 0.969674 10.7426L0.941897 10.7566Z" fill="currentColor"></path></svg>
+                    </div>
+                    <h2>Stay in the loop.</h2>
+                    <p>A simple way to receive new posts and updates from a blog designed around clarity, readability, and modern publishing.</p>
+                    <form data-members-form="subscribe" class="subscribe-cta-form">
+                        <input type="email" name="email" placeholder="Email address" required>
+                        <button type="submit" class="btn-subscribe">Subscribe</button>
+                    </form>
+                </div>
+                {{#get "posts" limit="1" filter="featured:true" include="tags"}}
+                    {{#foreach posts}}
+                    <div class="subscribe-cta-image">
+                        {{#if feature_image}}
+                        <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy">
+                        {{/if}}
+                    </div>
+                    {{/foreach}}
+                {{/get}}
+            </div>
+        </div>
+    </section>
+    {{!-- CTA Banner --}}
+    <section class="cta-banner-section">
+        <div class="container">
+            <div class="cta-banner">
+                <div class="cta-banner-grid"></div>
+                <div class="cta-banner-orb cta-banner-orb-1"></div>
+                <div class="cta-banner-orb cta-banner-orb-2"></div>
+                <div class="cta-float" style="top:28px;right:320px;transform:rotate(1deg);">
+                    <span>&#127873;</span>
+                    <span>10,000 Free Credits</span>
+                </div>
+                <div class="cta-float" style="top:28px;right:40px;transform:rotate(-0.8deg);">
+                    <span>&#128197;</span>
+                    <span>Monthly Giveaway</span>
+                </div>
+                <div class="cta-float" style="top:110px;right:280px;transform:rotate(-0.5deg);">
+                    <span>&#128640;</span>
+                    <span>Sales Navigator</span>
+                </div>
+                <div class="cta-float" style="top:110px;right:50px;transform:rotate(1.2deg);">
+                    <span>&#128231;</span>
+                    <span>Email Enrichment</span>
+                </div>
+                <div class="cta-banner-content">
+                    <h2>Win 10,000 Free <span>Credits</span> Every Month</h2>
+                    <p>We give away 10,000 WizLeads credits to one lucky subscriber every month. Scrape leads, find emails, or verify your list. Subscribe to the blog to enter.</p>
+                    <a href="#/portal/signup" class="cta-banner-btn">
+                        Subscribe to Enter
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {{/unless}}
+
+    {{!-- Posts Grid --}}
+    <section class="posts-section">
+        <div class="container">
+            {{#unless pagination.prev}}
+            <h2 class="section-heading">Stories & Latest Posts</h2>
+            {{else}}
+            <h2 class="section-heading">Page {{pagination.page}}</h2>
+            {{/unless}}
+            <div class="posts-grid">
+                {{#foreach posts}}
+                {{> "post-card"}}
+                {{/foreach}}
+            </div>
+            {{#if pagination.next}}
+            <div class="pagination">
+                <a href="{{pagination.next}}" class="btn-load-more">Load More</a>
+            </div>
+            {{/if}}
+        </div>
+    </section>
+</div>

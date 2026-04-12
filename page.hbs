@@ -1,0 +1,32 @@
+{{!< default}}
+
+{{#post}}
+<article class="page-single">
+
+    {{#match @page.show_title_and_feature_image}}
+    <header class="page-header">
+        <div class="container">
+            <h1 class="page-title">{{title}}</h1>
+            {{#if custom_excerpt}}
+            <p class="page-excerpt">{{custom_excerpt}}</p>
+            {{/if}}
+        </div>
+    </header>
+
+    {{#if feature_image}}
+    <div class="page-hero-image">
+        <div class="container">
+            <img src="{{img_url feature_image size="l"}}" alt="{{title}}" fetchpriority="high" decoding="async">
+        </div>
+    </div>
+    {{/if}}
+    {{/match}}
+
+    <div class="post-body">
+        <div class="post-content" data-content>
+            {{content}}
+        </div>
+    </div>
+
+</article>
+{{/post}}

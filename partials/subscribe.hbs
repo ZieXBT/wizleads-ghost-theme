@@ -1,0 +1,14 @@
+<section class="subscribe-banner {{variant}}">
+    <div class="container">
+        <h3>Stay in the loop.</h3>
+        <p>Get new posts and updates delivered to your inbox.</p>
+        {{#unless @member}}
+        <form data-members-form="subscribe" class="subscribe-inline-form">
+            <input type="email" name="email" placeholder="Email address" required>
+            <button type="submit" class="btn-subscribe">Subscribe</button>
+        </form>
+        {{else}}
+        <p class="subscribe-thanks">You're already subscribed. Thank you!</p>
+        {{/unless}}
+    </div>
+</section>

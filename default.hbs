@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="application-name" content="{{@site.title}}">
+
+    <link rel="icon" href="{{asset "icons/favicon.svg"}}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{{asset "icons/apple-touch-icon.png"}}">
+
+    {{!-- Preconnect Ghost image CDN --}}
+    <link rel="preconnect" href="https://cdn.ghost.io" crossorigin>
+
+    {{!-- Preload feature image on single posts (LCP optimization) --}}
+    {{#is "post"}}{{#post}}{{#if feature_image}}
+    <link rel="preload" as="image"
+          href="{{img_url feature_image size="l"}}"
+          imagesrcset="{{img_url feature_image size="s"}} 800w,
+                       {{img_url feature_image size="m"}} 1200w,
+                       {{img_url feature_image size="l"}} 1600w"
+          imagesizes="(min-width: 1200px) 1200px, 100vw"
+          fetchpriority="high">
+    {{/if}}{{/post}}{{/is}}
+
+    {{!-- Theme stylesheet --}}
+    <link rel="stylesheet" href="{{asset "css/screen.css"}}">
+
+    {{ghost_head}}
+</head>
+
+<body class="{{body_class}}">
+    <a class="skip-link" href="#main">Skip to content</a>
+
+    {{> "header"}}
+
+    <main id="main" tabindex="-1">
+        {{{body}}}
+    </main>
+
+    {{> "footer"}}
+
+    <script defer src="{{asset "js/theme.js"}}"></script>
+    {{ghost_foot}}
+</body>
+</html>

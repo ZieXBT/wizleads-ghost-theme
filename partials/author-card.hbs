@@ -1,0 +1,19 @@
+<aside class="author-card">
+    {{#if profile_image}}
+    <img class="author-card-avatar"
+         src="{{img_url profile_image size="s"}}"
+         alt="{{name}}"
+         width="80" height="80"
+         loading="lazy"
+         decoding="async">
+    {{/if}}
+    <div class="author-card-body">
+        <span class="post-tag">Written by</span>
+        <h3 class="author-card-name"><a href="{{url}}">{{name}}</a></h3>
+        {{#if bio}}<p class="author-card-bio">{{bio}}</p>{{/if}}
+        <ul class="author-card-links">
+            {{#if website}}<li><a href="{{website}}" rel="noopener me" target="_blank">Website</a></li>{{/if}}
+            {{#if twitter}}<li><a href="{{social_url type="twitter"}}" rel="noopener me" target="_blank">X</a></li>{{/if}}
+        </ul>
+    </div>
+</aside>

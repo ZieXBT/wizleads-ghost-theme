@@ -1,0 +1,52 @@
+{
+  "name": "wizleads-blog",
+  "description": "WizLeads blog theme - B2B lead generation insights, tutorials, and product updates",
+  "version": "0.2.0",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Vatsal Nigam",
+    "email": "vatsal@wizleads.io",
+    "url": "https://wizleads.io/"
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "ghost-theme",
+    "magazine",
+    "minimal"
+  ],
+  "gpm": {
+    "type": "theme",
+    "categories": [
+      "Magazine",
+      "Minimal"
+    ]
+  },
+  "config": {
+    "posts_per_page": 6,
+    "image_sizes": {
+      "xxs": { "width": 30 },
+      "xs": { "width": 400 },
+      "s": { "width": 800 },
+      "m": { "width": 1200 },
+      "l": { "width": 1600 },
+      "xl": { "width": 2000 }
+    },
+    "card_assets": true,
+    "custom": {
+      "show_related": {
+        "type": "boolean",
+        "default": true,
+        "group": "post"
+      },
+      "show_author_bio": {
+        "type": "boolean",
+        "default": true,
+        "group": "post"
+      }
+    }
+  }
+}

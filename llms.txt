@@ -1,0 +1,20 @@
+# {{SITE_TITLE}}
+
+> {{SITE_DESCRIPTION}}
+
+## About
+
+An independent editorial publication. Longform essays and analysis.
+
+## Recent Articles
+
+<!-- Auto-generate this section from /ghost/api/content/posts via a scheduled task -->
+
+## Authors
+
+<!-- Populate from /ghost/api/content/authors -->
+
+## Contact
+
+- RSS: {{SITE_URL}}/rss/
+- Email: editor@example.com
