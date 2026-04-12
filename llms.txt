@@ -1,10 +1,10 @@
-# {{SITE_TITLE}}
+# WizLeads Blog
 
-> {{SITE_DESCRIPTION}}
+> B2B lead generation tips, cold email strategies, Sales Navigator tutorials, and product updates from WizLeads.
 
 ## About
 
-An independent editorial publication. Longform essays and analysis.
+WizLeads is the all-in-one B2B lead generation tool. Scrape LinkedIn Sales Navigator, find verified business emails, and verify in bulk. This blog covers outbound sales strategies, email deliverability, lead enrichment workflows, and product updates.
 
 ## Recent Articles
 
@@ -12,9 +12,12 @@ An independent editorial publication. Longform essays and analysis.
 
 ## Authors
 
-<!-- Populate from /ghost/api/content/authors -->
+- Vatsal Nigam — Founder, WizLeads
 
 ## Contact
 
-- RSS: {{SITE_URL}}/rss/
-- Email: editor@example.com
+- Website: https://wizleads.io
+- Blog: https://wizleads.io/blog
+- RSS: https://wizleads.io/blog/rss/
+- Email: support@wizleads.io
+- Help Center: https://help.wizleads.io

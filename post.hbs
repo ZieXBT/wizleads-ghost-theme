@@ -29,6 +29,7 @@
                             <div class="post-author-info">
                                 <span class="post-author-name">{{name}}</span>
                                 <time class="post-author-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+                                {{#if updated_at}}<time class="post-modified-date" datetime="{{updated_at format="YYYY-MM-DD"}}" style="display:none;">Updated {{updated_at format="MMMM D, YYYY"}}</time>{{/if}}
                             </div>
                         </a>
                         {{/primary_author}}

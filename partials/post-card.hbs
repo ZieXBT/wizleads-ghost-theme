@@ -2,7 +2,7 @@
     <a href="{{url}}" class="post-card-link">
         {{#if feature_image}}
         <div class="post-card-image">
-            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" loading="lazy" decoding="async">
+            <img src="{{img_url feature_image size="m"}}" alt="{{title}}" width="600" height="375" loading="lazy" decoding="async">
             {{#if access}}{{else}}<span class="post-card-lock" aria-label="Members only">&#128274;</span>{{/if}}
         </div>
         {{/if}}

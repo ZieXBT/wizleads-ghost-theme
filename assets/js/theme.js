@@ -91,4 +91,54 @@
         });
     });
 
+    /* ---------------------------------------------------------------
+       Infinite scroll — AJAX "Load More" for post grids
+       --------------------------------------------------------------- */
+    var loadMoreBtn = document.querySelector('.btn-load-more');
+    if (loadMoreBtn) {
+        loadMoreBtn.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            var btn = this;
+            var nextUrl = btn.getAttribute('href');
+            if (!nextUrl || btn.classList.contains('loading')) return;
+
+            btn.classList.add('loading');
+            var originalText = btn.textContent;
+            btn.textContent = 'Loading…';
+
+            fetch(nextUrl)
+                .then(function (res) { return res.text(); })
+                .then(function (html) {
+                    var parser = new DOMParser();
+                    var doc = parser.parseFromString(html, 'text/html');
+
+                    // Extract post cards from fetched page
+                    var newCards = doc.querySelectorAll('.post-card');
+                    var grid = document.querySelector('.posts-grid');
+
+                    if (grid && newCards.length) {
+                        newCards.forEach(function (card) {
+                            grid.appendChild(document.importNode(card, true));
+                        });
+                    }
+
+                    // Check if there's a next page link in the fetched page
+                    var nextPageBtn = doc.querySelector('.btn-load-more');
+                    if (nextPageBtn && nextPageBtn.getAttribute('href')) {
+                        btn.setAttribute('href', nextPageBtn.getAttribute('href'));
+                        btn.textContent = originalText;
+                        btn.classList.remove('loading');
+                    } else {
+                        // No more pages — hide the button
+                        btn.parentElement.style.display = 'none';
+                    }
+                })
+                .catch(function () {
+                    btn.textContent = originalText;
+                    btn.classList.remove('loading');
+                });
+        });
+    }
+
 })();
