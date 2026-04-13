@@ -1,0 +1,19 @@
+{{!< default}}
+
+<div class="members-page">
+    <div class="members-card">
+        <h1>Sign up</h1>
+        <p>Create a free account to get full access to all posts and updates.</p>
+        <form data-members-form="signup" class="members-form">
+            <input data-members-name type="text" placeholder="Your name" autocomplete="name">
+            <input data-members-email type="email" placeholder="Email address" required autocomplete="email">
+            <button type="submit" class="btn-subscribe">
+                <span class="default">Sign up</span>
+                <span class="loading">{{> "icons/loader"}}</span>
+            </button>
+            <p class="message-success">Great! Check your inbox for a confirmation link.</p>
+            <p class="message-error">Something went wrong. Please try again.</p>
+        </form>
+        <p class="members-alt">Already have an account? <a href="#/portal/signin">Log in</a></p>
+    </div>
+</div>

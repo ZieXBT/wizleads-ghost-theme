@@ -21,6 +21,7 @@
     </section>
 
     {{!-- Featured + Sidebar --}}
+    {{#match @custom.show_featured_posts}}
     <section class="featured-section">
         <div class="container">
             <div class="featured-grid">
@@ -56,6 +57,7 @@
             </div>
         </div>
     </section>
+    {{/match}}
 
     {{!-- CTA Banner --}}
     <section class="cta-banner-section">
@@ -89,8 +91,8 @@
                     <span>Catchall Verification</span>
                 </div>
                 <div class="cta-banner-content">
-                    <h2>Win 10,000 Free <span>Credits</span> Every Month</h2>
-                    <p>We do weekly giveaways of WizLeads 100% off coupon codes, free credits, and exclusive deals. Subscribe to the blog to enter.</p>
+                    <h2>{{@custom.cta_heading}}</h2>
+                    <p>{{@custom.cta_description}}</p>
                     <form class="cta-banner-form" id="cta-subscribe-form">
                         <input type="text" name="name" placeholder="Your name" required>
                         <input type="email" name="email" placeholder="Email address" required>

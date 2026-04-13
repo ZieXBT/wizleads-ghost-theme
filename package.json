@@ -1,7 +1,7 @@
 {
   "name": "wizleads-blog",
   "description": "WizLeads blog theme - B2B lead generation insights, tutorials, and product updates",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "engines": {
     "ghost": ">=5.0.0"
   },
@@ -35,6 +35,51 @@
       "l": { "width": 1600 },
       "xl": { "width": 2000 }
     },
-    "card_assets": true
+    "card_assets": true,
+    "custom": {
+      "post_feed_style": {
+        "type": "select",
+        "options": ["Grid", "List"],
+        "default": "Grid",
+        "group": "homepage"
+      },
+      "show_featured_posts": {
+        "type": "boolean",
+        "default": true,
+        "group": "homepage"
+      },
+      "cta_heading": {
+        "type": "text",
+        "default": "Win 10,000 Free Credits Every Month",
+        "group": "homepage",
+        "description": "CTA banner heading"
+      },
+      "cta_description": {
+        "type": "text",
+        "default": "We do weekly giveaways of WizLeads 100% off coupon codes, free credits, and exclusive deals. Subscribe to the blog to enter.",
+        "group": "homepage",
+        "description": "CTA banner description"
+      },
+      "show_comments": {
+        "type": "boolean",
+        "default": true,
+        "group": "post"
+      },
+      "show_related_posts": {
+        "type": "boolean",
+        "default": true,
+        "group": "post"
+      },
+      "show_share_buttons": {
+        "type": "boolean",
+        "default": true,
+        "group": "post"
+      },
+      "show_reading_time": {
+        "type": "boolean",
+        "default": true,
+        "group": "post"
+      }
+    }
   }
 }

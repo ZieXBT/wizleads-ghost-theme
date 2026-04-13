@@ -1,0 +1,18 @@
+{{!< default}}
+
+<div class="members-page">
+    <div class="members-card">
+        <h1>Welcome back</h1>
+        <p>Sign in to your account to continue.</p>
+        <form data-members-form="signin" class="members-form">
+            <input data-members-email type="email" placeholder="Email address" required autocomplete="email">
+            <button type="submit" class="btn-subscribe">
+                <span class="default">Sign in</span>
+                <span class="loading">{{> "icons/loader"}}</span>
+            </button>
+            <p class="message-success">Great! Check your inbox for a sign-in link.</p>
+            <p class="message-error">Something went wrong. Please try again.</p>
+        </form>
+        <p class="members-alt">Don't have an account? <a href="#/portal/signup">Sign up</a></p>
+    </div>
+</div>

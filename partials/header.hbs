@@ -1,7 +1,11 @@
 <header class="floating-header" data-site-header>
-    <a class="fh-logo" href="https://wizleads.io">
-        <img src="{{asset "icons/favicon.svg"}}" alt="WizLeads" width="26" height="26">
-        WizLeads
+    <a class="fh-logo" href="{{@site.url}}">
+        {{#if @site.logo}}
+        <img src="{{@site.logo}}" alt="{{@site.title}}" width="26" height="26">
+        {{else}}
+        <img src="{{asset "icons/favicon.svg"}}" alt="{{@site.title}}" width="26" height="26">
+        {{/if}}
+        {{@site.title}}
     </a>
     <nav class="fh-nav" data-nav aria-label="Main navigation">
         <div class="fh-dropdown">
@@ -12,17 +16,24 @@
                 <a href="https://wizleads.io/email-verification">Email Verification</a>
             </div>
         </div>
-        <a href="https://wizleads.io/#features">Features</a>
-        <a href="https://wizleads.io/#how-it-works">How It Works</a>
-        <a href="https://wizleads.io/api">API</a>
-        <a href="https://wizleads.io/#pricing">Pricing</a>
-        <a href="https://wizleads.io/blog">Blog</a>
+        {{navigation}}
     </nav>
     <div class="fh-actions">
-        <a href="https://app.wizleads.io/login" class="fh-login">Log in</a>
-        <a href="https://app.wizleads.io/register" class="fh-cta">Get Started</a>
+        {{#if @site.members_enabled}}
+            {{#if @member}}
+                <a href="{{@site.url}}/#/portal/account" class="fh-login">Account</a>
+            {{else}}
+                <a href="{{@site.url}}/#/portal/signin" class="fh-login">Log in</a>
+                <a href="{{@site.url}}/#/portal/signup" class="fh-cta">Subscribe</a>
+            {{/if}}
+        {{else}}
+            <a href="https://app.wizleads.io/login" class="fh-login">Log in</a>
+            <a href="https://app.wizleads.io/register" class="fh-cta">Get Started</a>
+        {{/if}}
     </div>
-    <a href="https://app.wizleads.io/register" class="fh-mobile-cta">Get Started</a>
+    {{#unless @member}}
+    <a href="{{@site.url}}/#/portal/signup" class="fh-mobile-cta">Subscribe</a>
+    {{/unless}}
     <button type="button" class="fh-mobile-btn" data-nav-toggle aria-label="Menu">
         <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
     </button>
@@ -31,13 +42,18 @@
     <a href="https://wizleads.io/sales-navigator">LinkedIn Sales Navigator Scraper</a>
     <a href="https://wizleads.io/email-enrichment">Email Enrichment</a>
     <a href="https://wizleads.io/email-verification">Email Verification</a>
-    <a href="https://wizleads.io/#features">Features</a>
-    <a href="https://wizleads.io/#how-it-works">How It Works</a>
-    <a href="https://wizleads.io/api">API</a>
-    <a href="https://wizleads.io/#pricing">Pricing</a>
-    <a href="https://wizleads.io/blog">Blog</a>
+    {{navigation}}
     <div class="fh-mobile-actions">
-        <a href="https://app.wizleads.io/login" class="fh-login">Log in</a>
-        <a href="https://app.wizleads.io/register" class="fh-cta">Get Started</a>
+        {{#if @site.members_enabled}}
+            {{#if @member}}
+                <a href="{{@site.url}}/#/portal/account" class="fh-login">Account</a>
+            {{else}}
+                <a href="{{@site.url}}/#/portal/signin" class="fh-login">Log in</a>
+                <a href="{{@site.url}}/#/portal/signup" class="fh-cta">Subscribe</a>
+            {{/if}}
+        {{else}}
+            <a href="https://app.wizleads.io/login" class="fh-login">Log in</a>
+            <a href="https://app.wizleads.io/register" class="fh-cta">Get Started</a>
+        {{/if}}
     </div>
 </div>

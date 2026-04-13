@@ -1,0 +1,18 @@
+{{!< default}}
+
+<div class="members-page">
+    <div class="members-card">
+        <h1>Your account</h1>
+        <p>Manage your account settings.</p>
+        {{#if @member}}
+        <div class="members-account-info">
+            <p><strong>{{@member.name}}</strong></p>
+            <p>{{@member.email}}</p>
+        </div>
+        <a href="javascript:void(0)" data-portal="account" class="btn-subscribe" style="text-align:center;display:block;text-decoration:none;">Manage account</a>
+        {{else}}
+        <p>You need to be signed in to view this page.</p>
+        <a href="#/portal/signin" class="btn-subscribe" style="text-align:center;display:block;text-decoration:none;">Sign in</a>
+        {{/if}}
+    </div>
+</div>

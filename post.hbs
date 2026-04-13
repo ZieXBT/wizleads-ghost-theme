@@ -29,6 +29,9 @@
                             <div class="post-author-info">
                                 <span class="post-author-name">{{name}}</span>
                                 <time class="post-author-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
+                                {{#match @custom.show_reading_time}}
+                                <span class="post-reading-time">{{reading_time}}</span>
+                                {{/match}}
                                 <time class="post-modified-date" datetime="{{date updated_at format="YYYY-MM-DD"}}" style="display:none;">Updated {{date updated_at format="MMMM D, YYYY"}}</time>
                             </div>
                         </a>
@@ -76,6 +79,7 @@
                         {{/foreach}}
                     </div>
                 </div>
+                {{#match @custom.show_share_buttons}}
                 <div class="post-share-section">
                     <h4 class="meta-label">Share</h4>
                     <div class="share-icons">
@@ -85,12 +89,25 @@
                         <button type="button" class="share-icon-lg" data-share="copy"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 002 2h12a2 2 0 002-2v-8M16 6l-4-4-4 4M12 2v13"/></svg></button>
                     </div>
                 </div>
+                {{/match}}
             </div>
         </div>
     </div>
     {{/if}}
 
+    {{!-- Comments --}}
+    {{#match @custom.show_comments}}
+    {{#if comments}}
+    <div class="post-comments">
+        <div class="container">
+            {{comments}}
+        </div>
+    </div>
+    {{/if}}
+    {{/match}}
+
     {{!-- Related Posts --}}
+    {{#match @custom.show_related_posts}}
     {{#get "posts" filter="id:-{{id}}" limit="3" include="tags,authors" as |related|}}
     {{#if related}}
     <section class="related-posts">
@@ -105,6 +122,7 @@
     </section>
     {{/if}}
     {{/get}}
+    {{/match}}
 
 </article>
 {{/post}}

@@ -2587,3 +2587,113 @@ a.kg-btn-accent,
 .gh-portal-btn-main {
     background-color: #7c3aed !important;
 }
+
+/* -----------------------------------------------------------------------------
+   Reading time
+   -------------------------------------------------------------------------- */
+.post-reading-time {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+.post-reading-time::before {
+    content: "·";
+    margin: 0 6px;
+}
+
+/* -----------------------------------------------------------------------------
+   Comments section
+   -------------------------------------------------------------------------- */
+.post-comments {
+    padding: 2rem 0;
+    max-width: var(--content-width);
+    margin: 0 auto;
+}
+
+/* -----------------------------------------------------------------------------
+   Members pages (signin, signup, account)
+   -------------------------------------------------------------------------- */
+.members-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 60vh;
+    padding: 4rem 1.5rem;
+}
+.members-card {
+    width: 100%;
+    max-width: 420px;
+    text-align: center;
+}
+.members-card h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+}
+.members-card > p {
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+}
+.members-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.members-form input {
+    padding: 14px 18px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    font-size: 1rem;
+    font-family: inherit;
+    background: #fafafa;
+    outline: none;
+}
+.members-form input:focus {
+    border-color: var(--purple);
+}
+.members-form button {
+    padding: 14px;
+    background: var(--purple);
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+}
+.members-form button:hover {
+    background: var(--purple-hover);
+}
+.members-form button .loading {
+    display: none;
+}
+.members-form.loading button .default {
+    display: none;
+}
+.members-form.loading button .loading {
+    display: inline-flex;
+}
+.members-alt {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+.members-alt a {
+    color: var(--purple);
+    font-weight: 600;
+    text-decoration: none;
+}
+.members-account-info {
+    margin-bottom: 1.5rem;
+    padding: 1.5rem;
+    background: #f4f4f5;
+    border-radius: 10px;
+}
+.icon-loader {
+    animation: spin 1s linear infinite;
+    width: 20px;
+    height: 20px;
+}
+@keyframes spin {
+    100% { transform: rotate(360deg); }
+}

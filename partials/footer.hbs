@@ -2,11 +2,15 @@
     <div class="container">
         <div class="footer-grid">
             <div class="footer-brand">
-                <a href="/" class="footer-logo">
-                    <img src="{{asset "icons/favicon.svg"}}" alt="WizLeads" width="28" height="28">
-                    <span>WizLeads</span>
+                <a href="{{@site.url}}" class="footer-logo">
+                    {{#if @site.logo}}
+                    <img src="{{@site.logo}}" alt="{{@site.title}}" width="28" height="28">
+                    {{else}}
+                    <img src="{{asset "icons/favicon.svg"}}" alt="{{@site.title}}" width="28" height="28">
+                    {{/if}}
+                    <span>{{@site.title}}</span>
                 </a>
-                <p class="footer-desc">Scrape LinkedIn Sales Navigator leads and find verified B2B emails in minutes. Built for agencies, sales teams, and lead gen pros.</p>
+                <p class="footer-desc">{{@site.description}}</p>
                 <div class="footer-social">
                     <a href="https://www.linkedin.com/in/vatsalnigam/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                         <img src="{{asset "images/logos/linkedin-icon.webp"}}" alt="LinkedIn" width="22" height="22" style="border-radius:4px;" decoding="async">
@@ -34,6 +38,7 @@
             <nav class="footer-col" aria-label="Resources">
                 <h4>Resources</h4>
                 <ul>
+                    {{navigation type="secondary"}}
                     <li><a href="https://help.wizleads.io" target="_blank" rel="noopener noreferrer">Help Center</a></li>
                     <li><a href="https://wizleads.io/privacy">Privacy Policy</a></li>
                     <li><a href="https://wizleads.io/terms">Terms of Service</a></li>
@@ -53,7 +58,7 @@
     </div>
     <div class="footer-bottom">
         <div class="container">
-            <p>&copy; {{date format="YYYY"}} WizLeads. All rights reserved.</p>
+            <p>&copy; {{date format="YYYY"}} {{@site.title}}. All rights reserved.</p>
         </div>
     </div>
 </footer>
