@@ -48,12 +48,6 @@
         "group": "homepage",
         "description": "CTA banner heading"
       },
-      "cta_description": {
-        "type": "text",
-        "default": "We do weekly giveaways of WizLeads 100% off coupon codes, free credits, and exclusive deals. Subscribe to the blog to enter.",
-        "group": "homepage",
-        "description": "CTA banner description"
-      },
       "show_comments": {
         "type": "boolean",
         "default": true,
