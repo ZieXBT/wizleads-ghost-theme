@@ -3,6 +3,17 @@
     'use strict';
 
     /* ---------------------------------------------------------------
+       Reading time (calculated client-side from post content)
+       --------------------------------------------------------------- */
+    var readingEl = document.querySelector('[data-reading-time]');
+    var contentEl = document.querySelector('.post-content');
+    if (readingEl && contentEl) {
+        var words = contentEl.textContent.trim().split(/\s+/).length;
+        var mins = Math.max(1, Math.round(words / 230));
+        readingEl.textContent = ' · ' + mins + ' min read';
+    }
+
+    /* ---------------------------------------------------------------
        Sticky header scroll state
        --------------------------------------------------------------- */
     var header = document.querySelector('[data-site-header]');

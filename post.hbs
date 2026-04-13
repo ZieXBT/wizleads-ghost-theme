@@ -30,9 +30,7 @@
                                 <span class="post-author-name">{{name}}</span>
                                 <span class="post-author-meta">
                                     <time class="post-author-date" datetime="{{date format="YYYY-MM-DD"}}">{{date format="MMMM D, YYYY"}}</time>
-                                    {{#match @custom.show_reading_time}}
-                                    <span class="post-reading-time"> · {{reading_time minute="min read" minutes="min read"}}</span>
-                                    {{/match}}
+                                    <span class="post-reading-time" data-reading-time></span>
                                 </span>
                                 <time class="post-modified-date" datetime="{{date updated_at format="YYYY-MM-DD"}}" style="display:none;">Updated {{date updated_at format="MMMM D, YYYY"}}</time>
                             </div>
