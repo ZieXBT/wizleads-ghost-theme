@@ -26,7 +26,12 @@
           fetchpriority="high">
     {{/if}}{{/post}}{{/is}}
 
-    <title>{{meta_title}}</title>
+    {{#is "home"}}<title>{{@site.title}}{{#if @site.description}} - {{@site.description}}{{/if}}</title>{{/is}}
+    {{#is "post"}}<title>{{#post}}{{title}}{{/post}} - {{@site.title}}</title>{{/is}}
+    {{#is "page"}}<title>{{#post}}{{title}}{{/post}} - {{@site.title}}</title>{{/is}}
+    {{#is "tag"}}<title>{{#tag}}{{name}}{{/tag}} - {{@site.title}}</title>{{/is}}
+    {{#is "author"}}<title>{{#author}}{{name}}{{/author}} - {{@site.title}}</title>{{/is}}
+    {{#is "paged"}}<title>{{@site.title}} - Page {{pagination.page}}</title>{{/is}}
 
     {{!-- Theme stylesheet --}}
     <link rel="stylesheet" href="{{asset "css/screen.css"}}">
