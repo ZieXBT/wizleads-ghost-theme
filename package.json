@@ -37,12 +37,6 @@
     },
     "card_assets": true,
     "custom": {
-      "post_feed_style": {
-        "type": "select",
-        "options": ["Grid", "List"],
-        "default": "Grid",
-        "group": "homepage"
-      },
       "show_featured_posts": {
         "type": "boolean",
         "default": true,

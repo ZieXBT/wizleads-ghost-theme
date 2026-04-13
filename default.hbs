@@ -30,7 +30,7 @@
     {{#is "post"}}<title>{{#post}}{{title}}{{/post}} - {{@site.title}}</title>{{/is}}
     {{#is "page"}}<title>{{#post}}{{title}}{{/post}} - {{@site.title}}</title>{{/is}}
     {{#is "tag"}}<title>{{#tag}}{{name}}{{/tag}} - {{@site.title}}</title>{{/is}}
-    {{#is "author"}}<title>{{#author}}{{name}}{{/author}} - {{@site.title}}</title>{{/is}}
+    {{#is "author"}}<title>{{#primary_author}}{{name}}{{/primary_author}} - {{@site.title}}</title>{{/is}}
     {{#is "paged"}}<title>{{@site.title}} - Page {{pagination.page}}</title>{{/is}}
 
     {{!-- Theme stylesheet --}}

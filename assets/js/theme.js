@@ -10,7 +10,7 @@
     if (readingEl && contentEl) {
         var words = contentEl.textContent.trim().split(/\s+/).length;
         var mins = Math.max(1, Math.round(words / 230));
-        readingEl.textContent = ' · ' + mins + ' min read';
+        readingEl.innerHTML = ' &nbsp;·&nbsp; ' + mins + ' min read';
     }
 
     /* ---------------------------------------------------------------
