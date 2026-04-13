@@ -1281,17 +1281,31 @@ main, #main { padding-top: 80px; }
     width: 100%;
     border-collapse: collapse;
     margin: 2rem 0;
-    font-size: var(--fs-sm);
+    font-size: var(--fs-base);
+    border: none;
 }
 .post-content th,
 .post-content td {
-    padding: 0.75rem 1rem;
-    border-bottom: 1px solid var(--border);
+    padding: 1rem 1.25rem;
     text-align: left;
+    border: none;
+    border-bottom: 1px solid #e5e7eb;
 }
-.post-content th {
-    font-weight: 600;
-    background: var(--border-light);
+.post-content thead th {
+    font-weight: 700;
+    font-size: var(--fs-sm);
+    color: var(--text);
+    background: #f4f4f5;
+    border-bottom: none;
+}
+.post-content thead th:first-child {
+    border-radius: 8px 0 0 8px;
+}
+.post-content thead th:last-child {
+    border-radius: 0 8px 8px 0;
+}
+.post-content tbody tr:last-child td {
+    border-bottom: 1px solid #e5e7eb;
 }
 .post-content .table-wrapper {
     overflow-x: auto;
