@@ -6,5 +6,7 @@ built/
 .env
 .vscode/
 .idea/
+.claude/
+TECHNICAL-SEO-BEST-PRACTICES.txt
 npm-debug.log
 yarn-error.log

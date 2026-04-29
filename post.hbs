@@ -59,10 +59,23 @@
         </div>
     </header>
 
-    {{!-- Post Body --}}
+    {{!-- Post Body — 3-column layout: TOC | Content | Banner --}}
     <div class="post-body">
-        <div class="post-content" data-content>
-            {{content}}
+        <div class="post-body-grid container">
+            <aside class="post-toc-sidebar" aria-label="Table of contents" data-toc>
+                <div class="post-toc-inner">
+                    <p class="post-toc-label">In this article</p>
+                    <ul class="post-toc-list" data-toc-list role="list"></ul>
+                </div>
+            </aside>
+
+            <div class="post-content" data-content>
+                {{content}}
+            </div>
+
+            <aside class="post-banner-sidebar" aria-label="Sponsored">
+                {{> "banner-vertical"}}
+            </aside>
         </div>
     </div>
 

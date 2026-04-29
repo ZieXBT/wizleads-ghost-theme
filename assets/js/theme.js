@@ -54,7 +54,7 @@
         var headings = content.querySelectorAll('h2, h3');
         if (headings.length < 2) {
             var tocEl = document.querySelector('[data-toc]');
-            if (tocEl) tocEl.remove();
+            if (tocEl) tocEl.style.visibility = 'hidden';
         } else {
             var items = [];
             headings.forEach(function (h, i) {
