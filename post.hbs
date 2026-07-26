@@ -108,16 +108,14 @@
     </div>
     {{/if}}
 
-    {{!-- Comments --}}
-    {{#match @custom.show_comments}}
-    {{#if comments}}
-    <div class="post-comments">
+    {{!-- Author Bio (E-E-A-T) --}}
+    <section class="post-author-bio">
         <div class="container">
-            {{comments}}
+            {{#primary_author}}
+            {{> "author-card"}}
+            {{/primary_author}}
         </div>
-    </div>
-    {{/if}}
-    {{/match}}
+    </section>
 
     {{!-- Related Posts --}}
     {{#match @custom.show_related_posts}}

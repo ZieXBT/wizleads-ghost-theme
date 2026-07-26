@@ -610,8 +610,7 @@ main, #main { padding-top: 80px; }
 }
 .featured-img {
     width: 100%;
-    aspect-ratio: 16/10;
-    object-fit: cover;
+    height: auto;
     border-radius: 10px;
     margin-bottom: 1.25rem;
 }
@@ -654,8 +653,7 @@ main, #main { padding-top: 80px; }
 }
 .sidebar-img {
     width: 148px;
-    height: 100px;
-    object-fit: cover;
+    height: auto;
     border-radius: 10px;
     flex-shrink: 0;
 }
@@ -902,8 +900,7 @@ main, #main { padding-top: 80px; }
 }
 .post-card-image img {
     width: 100%;
-    aspect-ratio: 16/10;
-    object-fit: cover;
+    height: auto;
     border-radius: 0;
     transition: transform 0.4s var(--ease);
 }
@@ -1099,10 +1096,8 @@ main, #main { padding-top: 80px; }
 }
 .post-hero-image img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
     display: block;
-    aspect-ratio: 16/10;
 }
 .post-hero-image figcaption {
     font-size: 13px;
@@ -2141,14 +2136,10 @@ mark {
 }
 
 /* -----------------------------------------------------------------------------
-   18. Comments
+   18. Author Bio (E-E-A-T)
    -------------------------------------------------------------------------- */
-.comments-section {
-    padding: 3rem 0;
-    border-top: 1px solid var(--border);
-}
-.comments-section .section-heading {
-    margin-bottom: 1.5rem;
+.post-author-bio {
+    padding: 0 0 1.5rem;
 }
 
 /* -----------------------------------------------------------------------------
@@ -2555,11 +2546,10 @@ mark {
     }
     .sidebar-img-wrapper {
         width: 140px;
-        height: 88px;
     }
     .sidebar-img {
         width: 140px;
-        height: 88px;
+        height: auto;
     }
     .sidebar-title {
         font-size: 18px;
@@ -2729,15 +2719,6 @@ a.kg-btn-accent,
 }
 .post-reading-time {
     color: var(--text-muted);
-}
-
-/* -----------------------------------------------------------------------------
-   Comments section
-   -------------------------------------------------------------------------- */
-.post-comments {
-    padding: 2rem 0;
-    max-width: var(--content-width);
-    margin: 0 auto;
 }
 
 /* -----------------------------------------------------------------------------
