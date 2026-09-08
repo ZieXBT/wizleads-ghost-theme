@@ -1453,29 +1453,16 @@ mark {
     margin-bottom: 0;
 }
 
-/* Wide image */
-.post-content .kg-width-wide {
-    max-width: 1000px;
-    margin-left: calc(50% - 500px);
-    margin-right: calc(50% - 500px);
-}
-@media (max-width: 1040px) {
-    .post-content .kg-width-wide {
-        max-width: 100vw;
-        margin-left: calc(50% - 50vw);
-        margin-right: calc(50% - 50vw);
-        padding: 0 1.5rem;
-    }
-}
-
-/* Full-width image */
+/* Wide/full images — constrained to the content column so they can never
+   overlap the TOC or banner rails, regardless of the width picked in the
+   editor */
+.post-content .kg-width-wide,
 .post-content .kg-width-full {
-    max-width: 100vw;
-    margin-left: calc(50% - 50vw);
-    margin-right: calc(50% - 50vw);
+    max-width: 100%;
+    margin-left: 0;
+    margin-right: 0;
 }
 .post-content .kg-width-full img {
-    border-radius: 0;
     width: 100%;
 }
 
